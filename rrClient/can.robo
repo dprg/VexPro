@@ -1,0 +1,55 @@
+<head><version>2.42.26</version></head>
+<Gamma>
+  <gain>3.75</gain>
+</Gamma>
+<RGB_Filter>
+  <channel>1</channel>
+  <hysteresis>0</hysteresis>
+  <result_type>2</result_type>
+  <min_value>77</min_value>
+  <hue_value>56</hue_value>
+</RGB_Filter>
+<Auto_Threshold>
+  <distance>10</distance>
+  <max_range>255</max_range>
+  <min_range>0</min_range>
+  <single_range>10</single_range>
+  <method>6</method>
+  <symmetry_percent>10</symmetry_percent>
+  <percent>50</percent>
+</Auto_Threshold>
+<Blob_Size>
+  <limit>5</limit>
+  <min_area>10</min_area>
+  <treat_as_color_image>FALSE</treat_as_color_image>
+  <mask>FALSE</mask>
+  <threshold>5</threshold>
+  <max_area>0</max_area>
+</Blob_Size>
+<Shape_Match>
+  <is_rotational_invariant>TRUE</is_rotational_invariant>
+  <min_confidence>70</min_confidence>
+  <min_size>10</min_size>
+  <high_resolution_orientation>FALSE</high_resolution_orientation>
+  <max_size>1000</max_size>
+  <sort_array_on_y>FALSE</sort_array_on_y>
+  <monitor_folder>FALSE</monitor_folder>
+  <display_confidence>TRUE</display_confidence>
+  <max_angle>360</max_angle>
+  <display_result>-1</display_result>
+  <display_orientation>FALSE</display_orientation>
+  <select_top_blobs>1024</select_top_blobs>
+  <create_shape_array>TRUE</create_shape_array>
+  <min_angle>0</min_angle>
+  <overlay_image>Current</overlay_image>
+  <is_mirrored_invariant>FALSE</is_mirrored_invariant>
+  <max_confidence>100</max_confidence>
+  <base_folder>C:\Users\bouchier\Documents\Robotics\roborealm\redcan</base_folder>
+  <display_coord>FALSE</display_coord>
+  <color_index>-1</color_index>
+  <display_box>TRUE</display_box>
+  <display_filename>FALSE</display_filename>
+  <sort_array_on_x>FALSE</sort_array_on_x>
+  <display_size>FALSE</display_size>
+  <font_size_index>-1</font_size_index>
+</Shape_Match>

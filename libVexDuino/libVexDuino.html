@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>libVexDuino</title>
+</head>
+<body>
+<h1>libVexDuino</h1>
+This is the main page for libVexDuino - a linux library for the VEXPro
+ARM9 Microcontroller -&nbsp;which &nbsp;provides a measure of Arduino
+language compatibility.
+<h1>Introduction</h1>
+LibVexDuino provides partial compatibility with the Arduino at the API
+level. This means that you can build many programs written in the
+Arduino language using the Terk-IDE, which is part of the VEXPro
+controller software, and run them on the VEXPro controller.<br>
+libVexDuino consists of several include files and the library file
+libvexduino.a. Note the difference in capitalization of the library
+filename. <br>
+<h1>LibVexDuino Installation</h1>
+Before using libVexDuino you must install it using the following
+procedure. You should have already installed the VEXPro development
+environment by following the instructions <a
+ href="http://code.google.com/p/terk-ide/wiki/InstallationInstructions">here</a>.<br>
+<ol>
+  <li>Open a cygwin shell (You
+installed cygwin as part of the Terk-IDE installation.)</li>
+  <li>cd to the directory where
+you installed libVexDuino</li>
+  <li>Run "make". This will install libVexDuino in the Terk build
+directories</li>
+</ol>
+<h1>Porting an Arduino Sketch to
+VEXPro</h1>
+These instructions explain how to take an Arduino sketch that builds
+using the Ardino IDE and can be downloaded and run on an Arduino and
+make minor modifications that allow it to build using the VEXPro
+Terk-IDE and to be downloaded, run and debugged on a VEXPro. The
+instructions use the&nbsp;Arduino Blink program as an example. The
+Blink example program is found in the libVexDuino/examples/1.Basics
+folder, and is a port of the corresponding Arduino example sketch. It
+blinks an LED connected to Digital I/O 13 about once a second. Adapt
+the instructions depending on the location of the Arduino program you
+want to port to VEXPro.<br>
+<br>
+You should have already downloaded the libVexDuino and installed it
+using the instructions above. <br>
+<h2>Copy the Arduino Sketch to a .cpp File</h2>
+<ol>
+  <li>Copy the folder containing
+the Arduino sketch you want to run on VEXPro to a suitable location
+which doesn't have a space in the folder name. A good location is
+\Users\&lt;myUserName&gt;\workspace. A bad location is"My
+Documents\Arduino"
+(space in the folder name).</li>
+  <li>Rename the Arduino sketch
+file by changing the filename extension to .cpp from .pde or .ino. (You
+can do this with Windows Explorer, or from the cygwin shell using the
+mv command.).&nbsp;</li>
+</ol>
+<h2>Create the Terk IDE Project</h2>
+<ol>
+  <li>Create a new project using
+the Terk-IDE. You can create a new project using existing Arduino
+source code by clicking the "Create New Project" button in the Terk
+Navigator pane of the Terk-IDE.&nbsp;</li>
+  <li>In the project creation
+dialog, uncheck "Use default location" and use the browse button to
+navigate to the location of your Arduino sketch.&nbsp;</li>
+  <li>Give the project a name,
+e.g. Blink, and &nbsp;press the Finish button. You should see the
+new Blink project in the left project explorer pane of the Terk IDE..</li>
+  <li>Right-click the new project
+and select properties. A dialog pops up which lets you set library
+paths.</li>
+  <li>Expand the "C/C++ Build" section in the left pane and click the
+"Settings" entry</li>
+  <li>On the "Tool Settings" tab,
+click on the "Libraries" settings icon in the "TerkOS C++ Linker
+(cygwin" section.</li>
+  <li>The upper section of the
+"Libraries" settings lists the libraries that are used for this VEXPro
+project. Click the + icon above the libraries and add "vexduino" as a
+library. (Note - the lib part of the filename is dropped - and it's all
+lower-case.). Use the "up
+arrow" to move vexduino to the top of the list of libraries.</li>
+  <li>Press OK to close the
+project properties.&nbsp;</li>
+</ol>
+<h2>Modify and Build the Arduino Sketch</h2>
+<ol>
+  <li>In the Terk IDE, click the
+arrow to expand the new project, and double-click the sketch (now a
+.cpp source file)
+to open it</li>
+  <li>Add the following line at
+the top of the sketch source code (.cpp file).&nbsp;
+#include "Arduino.h"</li>
+  <li>If your sketch calls any functions within the sketch, declare
+them at the top of the file. See below for an example.</li>
+  <li>You can add C/C++/Linux library functions if you want. A useful
+one to include is "#include &lt;stdio.h&gt;", which allows you to use
+printf("The value of x is %d\n", x); for displaying program execution
+status. See the Blink2 project for an example of how to do this.</li>
+  <li>If your sketch calls functions, define them at the top of the
+sketch. See the bottom of this section for instructions on how to do
+so, and Blink2.cpp for an example.</li>
+  <li>Right-click on the project and select "Clean Project". This will
+build the project (sketch) from scratch.</li>
+  <li>In the lower pane of the Terk IDE, click the "Console" tab and
+look at the build output for any compilation or linker errors that may
+have occurred, and correct them. The "Problems" tab may also be
+helpful, as you can double-click on a problem and the IDE will take you
+straight to the source code line with the problem.</li>
+</ol>
+<h3>Function Declaration</h3>
+If your sketch looks like this:<br>
+<code>setup() { // do nothing }<br>
+</code><code>loop()<br>
+{<br>
+&nbsp; ...<br>
+&nbsp; val = foo(x);&nbsp;&nbsp;&nbsp; // call function foo() to do
+something<br>
+}<br>
+int foo(int i)&nbsp;&nbsp;&nbsp; // function foo definition<br>
+{<br>
+&nbsp; ...<br>
+&nbsp; return (i*2);<br>
+}<br>
+</code><code></code>Change it to declare function foo at the start of
+the file, as shown below. Tell the compiler what the type of any
+arguments to the function are, and what type it returns. The semicolon
+after the function declaration tells the compiler it is a declaration
+and not a definition.<br>
+<code>#include "Arduino.h"<br>
+int foo(int);&nbsp;&nbsp;&nbsp; // function foo() declaration<br>
+setup() { // do nothing }<br>
+loop()<br>
+{<br>
+&nbsp; ...<br>
+&nbsp; val = foo(x);&nbsp;&nbsp;&nbsp; // call function foo() to do
+something<br>
+}<br>
+int foo(int i)&nbsp;&nbsp;&nbsp; // function foo definition<br>
+{<br>
+&nbsp; ...<br>
+&nbsp; return (i*2);<br>
+}</code><br>
+<code></code><code></code>
+<h2>Run the Arduino Sketch</h2>
+From here on out, things just get easier and more powerful. Follow the
+Terk IDE example <a
+ href="http://code.google.com/p/terk-ide/wiki/QuickIDEExample">here</a>
+to create a connection to the VEXPro and load and debug the Arduino
+sketch<a href="http://code.google.com/p/terk-ide/wiki/QuickIDEExample"></a>.
+You can set breakpoints in your&nbsp;sketch, and single-step the
+program from the Terk IDE (something requiring significant skill and
+external equipment on a real Arduino). <br>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<head><version>2.44.28</version></head>
+<Gamma>
+  <gain>3.02</gain>
+</Gamma>
+<RGB_Filter>
+  <channel>1</channel>
+  <hysteresis>0</hysteresis>
+  <result_type>2</result_type>
+  <min_value>91</min_value>
+  <hue_value>82</hue_value>
+</RGB_Filter>
+<Blob_Size>
+  <limit>5</limit>
+  <min_area>10</min_area>
+  <treat_as_color_image>FALSE</treat_as_color_image>
+  <mask>FALSE</mask>
+  <threshold>5</threshold>
+  <max_area>0</max_area>
+</Blob_Size>
+<Shape_Match>
+  <is_rotational_invariant>TRUE</is_rotational_invariant>
+  <min_confidence>70</min_confidence>
+  <min_size>30</min_size>
+  <high_resolution_orientation>FALSE</high_resolution_orientation>
+  <max_size>1000</max_size>
+  <sort_array_on_y>FALSE</sort_array_on_y>
+  <monitor_folder>TRUE</monitor_folder>
+  <display_confidence>TRUE</display_confidence>
+  <max_angle>360</max_angle>
+  <display_result>-1</display_result>
+  <present_after_frames>0</present_after_frames>
+  <display_orientation>FALSE</display_orientation>
+  <select_top_blobs>1024</select_top_blobs>
+  <create_shape_array>TRUE</create_shape_array>
+  <min_angle>0</min_angle>
+  <overlay_image>current</overlay_image>
+  <is_mirrored_invariant>FALSE</is_mirrored_invariant>
+  <absent_after_frames>0</absent_after_frames>
+  <max_confidence>100</max_confidence>
+  <base_folder>.</base_folder>
+  <display_coord>TRUE</display_coord>
+  <color_index>6</color_index>
+  <display_box>TRUE</display_box>
+  <display_filename>FALSE</display_filename>
+  <sort_array_on_x>FALSE</sort_array_on_x>
+  <display_size>FALSE</display_size>
+  <font_size_index>2</font_size_index>
+</Shape_Match>
